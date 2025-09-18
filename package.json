@@ -2,19 +2,24 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "postinstall": "prisma generate",
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build",
-    "build:server": "rimraf dist/server && tsc -p tsconfig.server.json",
-    "start": "node dist/server/index.js",
+    "build:server": "rimraf dist/server && tsc -p tsconfig.server.json && mkdir -p dist/server/generated && cp -r src/server/generated/prisma dist/server/generated/prisma",
+    "start": "node --env-file=.env dist/server/index.js",
     "dev": "npm run build && npm start"
   },
   "dependencies": {
+    "@noble/ed25519": "^3.0.0",
+    "@prisma/client": "^6.16.2",
     "express": "^5.1.0",
+    "multer": "^2.0.2",
     "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.35.0",
     "@types/express": "^5.0.3",
+    "@types/multer": "^2.0.0",
     "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react": "^4.7.0",
@@ -22,6 +27,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.4.0",
+    "prisma": "^6.16.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "rimraf": "^6.0.1",

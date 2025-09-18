@@ -3,7 +3,7 @@
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.server.tsbuildinfo",
     "target": "ES2023",
     "lib": ["ES2023"],
-    "module": "ESNext",
+    "module": "nodenext",
     "skipLibCheck": true,
 
     /* Linting */
@@ -17,6 +17,7 @@
     "outDir": "dist/server",
     "rootDir": "src/server",
     "allowSyntheticDefaultImports": true,
+    "moduleResolution": "nodenext",
   },
   "include": ["src/server"]
 }
